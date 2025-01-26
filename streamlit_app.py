@@ -21,20 +21,21 @@ st.write('Name on smoothie will be :', name_on_order)
 ingredients_string ='' 
 #smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
-#ingredients_list = st.multiselect ('Choose upto 5 ingredients', st_df, max_selections < 6)
+#ingredients_list = st.multiselect ('Choose upto 5 ingredients', st_df, max_selections = 5 )
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col ('FRUIT_NAME'))
 st.dataframe(data=my_dataframe, use_container_width=True)
-ingredients_list = st.multiselect ('Choose upto 5 ingredients', my_dataframe, max_selections = 5)
+ingredients_list = st.multiselect ('Choose upto 5 ingredients', my_dataframe, max_selections < 6)
 
 
 if ingredients_list:
       ingredients_string =''    
       for fruit_chosen in ingredients_list:
-            smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+            ingredients_string += fruit_chosen + ''
+            st.subheader(fruit_chosen + 'Nutrition Information')
+            smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+ fruit_chosen)
             st_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
-            ingredients_string += fruit_chosen +" "
-      st.write(ingredients_string)
+      #st.write(ingredients_string)
 
 my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """','""" +name_on_order+ """')"""
