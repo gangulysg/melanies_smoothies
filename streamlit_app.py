@@ -18,13 +18,13 @@ st.write('Name on smoothie will be :', name_on_order)
 ## )
 ## st.write('You selected :', option)
 ##
-#smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
-my_dataframe = session.table("smoothies.public.fruit_options").select(col ('FRUIT_NAME'))
-st.dataframe(data=my_dataframe, use_container_width=True)
-
-
-ingredients_list = st.multiselect ('Choose upto 5 ingredients', my_dataframe, max_selections = 5)
+ingredients_string ='' 
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
+ingredients_list = st.multiselect ('Choose upto 5 ingredients', st_df, max_selections = 5)
+#my_dataframe = session.table("smoothies.public.fruit_options").select(col ('FRUIT_NAME'))
+#st.dataframe(data=my_dataframe, use_container_width=True)
+#ingredients_list = st.multiselect ('Choose upto 5 ingredients', my_dataframe, max_selections = 5)
 
 
 if ingredients_list:
