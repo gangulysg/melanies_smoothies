@@ -7,6 +7,7 @@ from snowflake.snowpark.functions import col
 st.title(":cup_with_straw: Customize your Smoothie :cup_with_straw:")
 cnx = st.connection("snowflake")
 session = cnx.session()
+
 #session = get_active_session()
 
 name_on_order = st.text_input ('Name on Smoothie')
