@@ -3,5 +3,5 @@
 #  - snowflake
 #dependencies:
 #  - python >= 3.9.*
-snowflake-snowpark-python >3.9
+snowflake-snowpark-python
 streamlit
