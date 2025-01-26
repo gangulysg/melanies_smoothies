@@ -23,7 +23,7 @@ ingredients_string =''
 #st_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
 #ingredients_list = st.multiselect ('Choose upto 5 ingredients', st_df, max_selections = 5 )
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col ('FRUIT_NAME'), col('SEARCH_ON')
+my_dataframe = session.table("smoothies.public.fruit_options").select(col ('FRUIT_NAME'), col('SEARCH_ON'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 st.stop()
 
