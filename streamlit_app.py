@@ -27,7 +27,7 @@ st.write('Name on smoothie will be :', name_on_order)
 #ingredients_list = st.multiselect ('Choose upto 5 ingredients',  my_dataframe, max_selections = 5)
 
 
-if ingredients_list:
+#if ingredients_list:
     ingredients_string =''    
     for fruit_chosen in ingredients_list:
       smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
