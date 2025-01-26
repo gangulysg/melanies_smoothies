@@ -1,11 +1,13 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
+#from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize your Smoothie :cup_with_straw:")
-session = get_active_session()
+cnx = st.connection("snowflake")
+session = cnx.session()
+#session = get_active_session()
 
 name_on_order = st.text_input ('Name on Smoothie')
 st.write('Name on smoothie will be :', name_on_order)
